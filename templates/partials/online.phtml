@@ -1,0 +1,27 @@
+<?php echo $args['before_widget']; ?>
+<?php echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
+<p>
+    <?php _e('Status', 'mss_widget_domain'); ?>: <span style="color:green;font-weight:bold">Online</span><br>
+
+    <?php if (isset($instance['show_host']) && $instance['show_host'] == 'on'): ?>
+        <?php _e('Host', 'mss_widget_domain'); ?>: <strong><?php echo $instance['host']; ?></strong><br>
+    <?php endif; ?>
+
+    <?php if (isset($instance['show_port']) && $instance['show_port']): ?>
+        <?php _e('Port', 'mss_widget_domain'); ?>: <strong><?php echo $instance['port']; ?></strong><br>
+    <?php endif; ?>
+
+    <?php if (isset($instance['show_ping']) && $instance['show_ping']): ?>
+        <?php _e('Ping', 'mss_widget_domain'); ?>: <strong><?php printf("%1.0f ms", $status->getLatency()); ?></strong><br>
+    <?php endif; ?>
+        
+    <?php if (isset($instance['show_version']) && $instance['show_version']): ?>
+        <?php _e('Version', 'mss_widget_domain'); ?>: <strong><?php echo $status->getVersion(); ?></strong><br>
+    <?php endif; ?>
+
+    <?php if (isset($instance['show_players']) && $instance['show_players']) : ?>
+        <?php _e('Players', 'mss_widget_domain'); ?>: <strong><?php echo $status->getOnlinePlayers(); ?>/<?php echo $status->getMaxPlayers(); ?></strong>
+    <?php endif; ?>
+</p>
+
+<?php echo $args['after_widget'];

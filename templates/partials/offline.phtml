@@ -1,0 +1,17 @@
+<?php echo $args['before_widget']; ?>
+<?php echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
+<p>
+    <?php if (isset($instance['show_status']) && $instance['show_status'] == 'on'): ?>
+    <?php _e('Status', 'mss_widget_domain'); ?>: <span style="color:red;font-weight:bold">Offline</span><br>
+    <?php endif; ?>
+
+    <?php if (isset($instance['show_host']) && $instance['show_host'] == 'on'): ?>
+    <?php _e('Host', 'mss_widget_domain'); ?>: <strong><?php echo $instance['host']; ?></strong><br>
+    <?php endif; ?>
+
+    <?php if (isset($instance['show_port']) && $instance['show_port']): ?>
+    <?php _e('Port', 'mss_widget_domain'); ?>: <strong><?php echo $instance['port']; ?></strong><br>
+    <?php endif; ?>
+</p>
+
+<?php echo $args['after_widget'];
